@@ -18,7 +18,7 @@
 				<div>Order Status</div>
 				<div class="mb-3">{{form.status}}</div>
 
-				<input class="btn btn-primary" type="submit" name="Submit">
+				<button class="btn btn-primary" onclick="this.disabled=true,this.form.submit();">Submit</button>
 				<a class="btn btn-primary btn-danger" href="{% url 'home' %}"> Go back</a>
 			</form>
 		</div>

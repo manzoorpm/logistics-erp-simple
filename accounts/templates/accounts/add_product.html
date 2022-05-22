@@ -21,7 +21,8 @@
 				<div class="mb-3">{{form.description}}</div>
 				<div>Tags (Hold Control/command to select multiple tags)</div>
 				<div class="mb-3">{{form.tags}}</div>
-				<input class="btn btn-primary" type="submit" name="Submit">
+				<button class="btn btn-primary" onclick="this.disabled=true,this.form.submit();">Submit</button>
+
 				<a class="btn btn-primary btn-danger" href="{% url 'products' %}"> Go back</a>
 			</form>
 
