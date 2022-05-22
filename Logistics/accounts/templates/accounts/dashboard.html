@@ -1,17 +1,13 @@
+<!-- home page for displaying orders -->
 {% extends 'accounts/main.html' %}
-
 {% block content %}
-
-
 <br>
-
 <div class="row">
 	<div class="col-md-8">
 		<div class="card card-body">
 			<h5>Orders <a class="btn btn-sm btn-info" href="{% url 'create_order' %}">Create order</a></h5>
 			<p>Creating an order will assign products to a warehouse and update the shipping status!</p>
 			<p>Products and Warehouses can be accessed thought top navigation bar.</p>
-
 		</div>
 		<div class="card card-body">
 			<table class="table table-sm">
@@ -23,7 +19,6 @@
 					<th>Update</th>
 					<th>Remove</th>
 				</tr>
-
 				{% for order in orders %}
 				<tr>
 					<td>{{order.product}}</td>
@@ -31,17 +26,11 @@
 					<td><a href="{% url 'warehouse' order.warehouse.id %}">{{order.warehouse}}</a></td>
 					<td>{{order.status}}</td>
 					<td><a class="btn btn-sm btn-warning" href="{% url 'update_order' order.id %}">Update</a></td>
-
 					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>
-
 				</tr>
 				{% endfor %}
-
-
 			</table>
 		</div>
 	</div>
-
 </div>
-
 {% endblock %}

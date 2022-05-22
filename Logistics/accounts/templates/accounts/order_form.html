@@ -1,8 +1,7 @@
+<!-- Form for making new order -->
 {% extends 'accounts/main.html' %}
 {% load static %}
 {% block content %}
-
-
 <div class="row">
 	<div class="col-md-6">
 		<div class="card card-body">
@@ -22,10 +21,7 @@
 				<input class="btn btn-primary" type="submit" name="Submit">
 				<a class="btn btn-primary btn-danger" href="{% url 'home' %}"> Go back</a>
 			</form>
-
 		</div>
 	</div>
 </div>
-
-
 {% endblock %}

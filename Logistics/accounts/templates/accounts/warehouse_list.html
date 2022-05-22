@@ -1,9 +1,7 @@
+<!-- Page for viewing warehouse list -->
 {% extends 'accounts/main.html' %}
-
 {% block content %}
-
 <br>
-
 <div class="row">
 	<div class="col-md-7">
 		<div class="card card-body">
@@ -21,9 +19,7 @@
 					<th></th>
 					<th></th>
 					<th></th>
-
 				</tr>
-
 				{% for warehouse in warehouse %}
 				<tr>
 					<td><a href="{% url 'warehouse' warehouse.id %}">{{warehouse.name}}</a>
@@ -35,14 +31,10 @@
 					<td><a class="btn btn-sm btn-warning" href="{% url 'update_warehouse' warehouse.id %}">Edit</a></td>
 					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_warehouse' warehouse.id %}">Delete</a>
 					</td>
-
 				</tr>
 				{% endfor %}
-
 			</table>
 		</div>
 	</div>
-
 </div>
-
 {% endblock content %}

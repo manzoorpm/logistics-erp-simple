@@ -3,8 +3,6 @@ from django.forms import ModelForm
 from .models import Order, Warehouse, Product
 from django import forms
 
-
-
 class OrderForm(ModelForm):
 	class Meta:
 		model = Order

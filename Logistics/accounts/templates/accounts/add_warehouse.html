@@ -1,29 +1,24 @@
+<!-- Form for adding warehouse -->
 {% extends 'accounts/main.html' %}
 {% load static %}
 {% block content %}
-
-
 <div class="row">
 	<div class="col-md-6">
 		<div class="card card-body">
 			<h5>Add a new warehouse</h5>
 		</div>
 		<div class="card card-body">
-
 			<form action="" method="POST">
 				{% csrf_token %}
 				<div class="my-3">{{form.name}}</div>
 				<div class="my-3">{{form.phone}}</div>
 				<div class="my-3">{{form.email}}</div>
 				<div class="my-3">{{form.place}}</div>
-
 				<input class="btn btn-primary" type="submit" name="Submit">
 				<a class="btn btn-primary btn-danger" href="{% url 'warehouse_list' %}"> Go back</a>
 			</form>
-
 		</div>
 	</div>
 </div>
-
 
 {% endblock %}
