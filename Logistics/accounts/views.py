@@ -2,7 +2,6 @@ from http.server import ThreadingHTTPServer
 from itertools import product
 from django.shortcuts import render, redirect 
 from django.http import HttpResponse
-# Create your views here.
 from .models import *
 from .forms import OrderForm, ProductForm, WarehouseForm
 
@@ -17,22 +16,16 @@ def home(request):
 
 def products(request):
 	products = Product.objects.all()
-
-
 	return render(request, 'accounts/products.html', {'products':products})
 
 def warehouseList(request):
 	warehouse = Warehouse.objects.all()
-
-
 	return render(request, 'accounts/warehouse_list.html', {'warehouse':warehouse})
 
 def warehouse(request, pk_test):
 	warehouse = Warehouse.objects.get(id=pk_test)
-
 	orders = warehouse.order_set.all()
 	order_count = orders.count()
-
 	context = {'warehouse':warehouse, 'orders':orders, 'order_count':order_count}
 	return render(request, 'accounts/warehouse.html',context)
 
@@ -50,16 +43,13 @@ def createOrder(request):
 	return render(request, 'accounts/order_form.html', context)
 
 def updateOrder(request, pk):
-
 	order = Order.objects.get(id=pk)
 	form = OrderForm(instance=order)
-
 	if request.method == 'POST':
 		form = OrderForm(request.POST, instance=order)
 		if form.is_valid():
 			form.save()
 			return redirect('/')
-
 	context = {'form':form}
 	return render(request, 'accounts/order_form.html', context)
 
