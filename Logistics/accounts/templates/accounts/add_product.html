@@ -1,4 +1,4 @@
-{%  extends 'accounts/main.html' %}
+{% extends 'accounts/main.html' %}
 {% load static %}
 {% block content %}
 
@@ -6,12 +6,24 @@
 <div class="row">
 	<div class="col-md-6">
 		<div class="card card-body">
-
+			<h5>Add a new Product</h5>
+			<p>Add a new product to the items menu</p>
+		</div>
+		<div class="card card-body">
 			<form action="" method="POST">
 				{% csrf_token %}
-				{{form}}
-				
-				<input type="submit" name="Submit">
+				<div>Name</div>
+				<div class="mb-3">{{form.name}}</div>
+				<div>Price</div>
+				<div class="mb-3">{{form.price}}</div>
+				<div>Category</div>
+				<div class="mb-3">{{form.category}}</div>
+				<div>Description</div>
+				<div class="mb-3">{{form.description}}</div>
+				<div>Tags (Hold Control/command to select multiple tags)</div>
+				<div class="mb-3">{{form.tags}}</div>
+				<input class="btn btn-primary" type="submit" name="Submit">
+				<a class="btn btn-primary btn-danger" href="{% url 'products' %}"> Go back</a>
 			</form>
 
 		</div>

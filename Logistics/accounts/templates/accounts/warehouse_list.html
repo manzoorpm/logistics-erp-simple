@@ -32,7 +32,7 @@
 					<td>{{warehouse.email}}</td>
 					<td>{{warehouse.place}}</td>
 					<td><a class="btn btn-sm btn-success" href="{% url 'warehouse' warehouse.id %}">View</a></td>
-					<td><a class="btn btn-sm btn-warning" href="{% url 'warehouse' warehouse.id %}">Edit</a></td>
+					<td><a class="btn btn-sm btn-warning" href="{% url 'update_warehouse' warehouse.id %}">Edit</a></td>
 					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_warehouse' warehouse.id %}">Delete</a>
 					</td>
 
