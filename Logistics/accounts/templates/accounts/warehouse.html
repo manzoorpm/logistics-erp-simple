@@ -1,17 +1,20 @@
-{%  extends 'accounts/main.html' %}
+{% extends 'accounts/main.html' %}
 
 {% block content %}
 
-	<br>
+<br>
 
 <div class="row">
 	<div class="col-md">
 		<div class="card card-body">
-			<h5>Customer:</h5>
+			<h5>Warehouse Settings</h5>
 			<hr>
-			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'update_warehouse' warehouse.id %}">Update Warehouse</a>
-			<a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'delete_warehouse' warehouse.id %}">Delete Warehouse</a>
-
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'update_warehouse' warehouse.id %}">Update
+				Warehouse</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'delete_warehouse' warehouse.id %}">Delete
+				Warehouse</a>
+			<a class="btn btn-outline-primary  btn-sm btn-block" href="{% url 'create_order' %}">Make
+				Orders</a>
 		</div>
 	</div>
 

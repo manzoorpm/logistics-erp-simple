@@ -79,8 +79,7 @@ def createWarehouse(request):
 		form = WarehouseForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('/')
-
+			return redirect('warehouse_list')
 	context = {'form':form}
 	return render(request, 'accounts/add_warehouse.html', context)
 
@@ -93,7 +92,7 @@ def updateWarehouse(request, pk):
 		form = WarehouseForm(request.POST, instance=warehouse)
 		if form.is_valid():
 			form.save()
-			return redirect('/')
+			return redirect('warehouse_list')
 
 	context = {'form':form}
 	return render(request, 'accounts/add_warehouse.html', context)
@@ -102,7 +101,7 @@ def deleteWarehouse(request, pk):
 	warehouse = Warehouse.objects.get(id=pk)
 	if request.method == "POST":
 		warehouse.delete()
-		return redirect('/')
+		return redirect('warehouse_list')
 
 	context = {'item':warehouse}
 	return render(request, 'accounts/delete_warehouse.html', context)

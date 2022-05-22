@@ -1,38 +1,48 @@
-{%  extends 'accounts/main.html' %}
+{% extends 'accounts/main.html' %}
 
 {% block content %}
 
-		<br>
+<br>
 
-		<div class="row">
-			<div class="col-md">
-				<div class="card card-body">
-					<h5>Warehouse</h5>
-				</div>
-				<div class="card card-body">
-					<table class="table">
-						<tr>
-							<th>Product</th>
-							<th>Phone</th>
-							<th>Email</th>
-							<th>Place</th>
-
-						</tr>
-
-						{% for i in warehouse %}
-							<tr>
-								<td>{{i.name}}</td>
-								<td>{{i.phone}}</td>
-								<td>{{i.email}}</td>
-								<td>{{i.place}}</td>
-
-							</tr>
-						{% endfor %}
-						
-					</table>
-				</div>
-			</div>
-			
+<div class="row">
+	<div class="col-md-7">
+		<div class="card card-body">
+			<h5>Warehouse <a class="btn btn-sm btn-info" href="{% url 'create_warehouse' %}">Create New
+					Warehouse</a> </h5>
 		</div>
+		<div class="card card-body">
+
+			<table class="table">
+				<tr>
+					<th>Product</th>
+					<th>Phone</th>
+					<th>Email</th>
+					<th>Place</th>
+					<th></th>
+					<th></th>
+					<th></th>
+
+				</tr>
+
+				{% for warehouse in warehouse %}
+				<tr>
+					<td><a href="{% url 'warehouse' warehouse.id %}">{{warehouse.name}}</a>
+					</td>
+					<td>{{warehouse.phone}}</td>
+					<td>{{warehouse.email}}</td>
+					<td>{{warehouse.place}}</td>
+					<td><a class="btn btn-sm btn-success" href="{% url 'warehouse' warehouse.id %}">View</a></td>
+					<td><a class="btn btn-sm btn-warning" href="{% url 'warehouse' warehouse.id %}">Edit</a></td>
+					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_warehouse' warehouse.id %}">Delete</a>
+					</td>
+
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+</div>
 
 {% endblock content %}
