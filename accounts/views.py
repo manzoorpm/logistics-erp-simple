@@ -4,8 +4,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
 from .forms import OrderForm, ProductForm, WarehouseForm
+from django.views.decorators.csrf import csrf_exempt
 
-
+ 
 def home(request):
 	orders = Order.objects.all()
 	warehouse = Warehouse.objects.all()
@@ -13,7 +14,7 @@ def home(request):
 	context = {'orders':orders, 'warehouse':warehouse }
 
 	return render(request, 'accounts/dashboard.html', context)
-
+ 
 def products(request):
 	products = Product.objects.all()
 	return render(request, 'accounts/products.html', {'products':products})
@@ -29,7 +30,7 @@ def warehouse(request, pk_test):
 	context = {'warehouse':warehouse, 'orders':orders, 'order_count':order_count}
 	return render(request, 'accounts/warehouse.html',context)
 
-
+@csrf_exempt 
 def createOrder(request):
 	form = OrderForm()
 	if request.method == 'POST':
@@ -42,6 +43,7 @@ def createOrder(request):
 	context = {'form':form}
 	return render(request, 'accounts/order_form.html', context)
 
+@csrf_exempt
 def updateOrder(request, pk):
 	order = Order.objects.get(id=pk)
 	form = OrderForm(instance=order)
@@ -53,6 +55,7 @@ def updateOrder(request, pk):
 	context = {'form':form}
 	return render(request, 'accounts/order_form.html', context)
 
+@csrf_exempt
 def deleteOrder(request, pk):
 	order = Order.objects.get(id=pk)
 	if request.method == "POST":
@@ -62,6 +65,7 @@ def deleteOrder(request, pk):
 	context = {'item':order}
 	return render(request, 'accounts/delete.html', context)
 
+@csrf_exempt
 def createWarehouse(request):
 	form = WarehouseForm()
 	if request.method == 'POST':
@@ -73,6 +77,7 @@ def createWarehouse(request):
 	context = {'form':form}
 	return render(request, 'accounts/add_warehouse.html', context)
 
+@csrf_exempt
 def updateWarehouse(request, pk):
 
 	warehouse = Warehouse.objects.get(id=pk)
@@ -87,6 +92,7 @@ def updateWarehouse(request, pk):
 	context = {'form':form}
 	return render(request, 'accounts/add_warehouse.html', context)
 
+@csrf_exempt
 def deleteWarehouse(request, pk):
 	warehouse = Warehouse.objects.get(id=pk)
 	if request.method == "POST":
@@ -96,6 +102,7 @@ def deleteWarehouse(request, pk):
 	context = {'item':warehouse}
 	return render(request, 'accounts/delete_warehouse.html', context)
 
+@csrf_exempt
 def createProduct(request):
 	form = ProductForm()
 	if request.method == 'POST':
@@ -107,6 +114,7 @@ def createProduct(request):
 	context = {'form':form}
 	return render(request, 'accounts/add_product.html', context)
 
+@csrf_exempt
 def updateProduct(request, pk):
 
 	product = Product.objects.get(id=pk)
@@ -121,6 +129,7 @@ def updateProduct(request, pk):
 	context = {'form':form}
 	return render(request, 'accounts/add_product.html', context)
 
+@csrf_exempt
 def deleteProduct(request, pk):
 	product = Product.objects.get(id=pk)
 	if request.method == "POST":
